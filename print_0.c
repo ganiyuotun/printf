@@ -1,49 +1,47 @@
-#include <stdio.h>
+#include <unistd.h>
 #include <stdarg.h>
-#include <"main.h">
-
+#include <stdlib.h>
 /**
-* _printf - Produces output according to a format.
-* @format: The format string.
+* _printf - Custom printf function
+* @format: Format string with conversion specifiers
 *
-* Return: The number of characters printed
-* (excluding the null byte used to end output to strings).
+* Return: The number of characters printed (excluding the null byte)
 */
 int _printf(const char *format, ...)
 {
 va_list args;
-va_start(args, format);
-
 int count = 0;
-
-while (*format != '\0')
+va_start(args, format);
+while (*format)
 {
-if (*format == '%')
+if (*format == '%' && *(format + 1) != '\0')
 {
-format++;
+format++; // Move past '%'
 switch (*format)
 {
-case  'c':
-count += putchar(va_arg(args, int));
+case 'c':
+count += write(1, &va_arg(args, int), 1);
 break;
 case 's':
-count += putchar(va_arg(args, char*));
+count += write(1, va_arg(args, char *), 1);
 break;
 case '%':
-count += putchar('%');
-break;
-deafult:
+count += write(1, "%", 1);
 break;
 }
 }
 else
 {
-count += putchar(*format);
+count += write(1, format, 1);
 }
-
 format++;
 }
-
 va_end(args);
-return (count);
+return count;
+}
+// Testing the function
+int main(void)
+{
+_printf("Hello, %c%s%%!\n", 'W', "orld");
+return 0;
 }
