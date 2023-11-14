@@ -1,7 +1,4 @@
 #include "main.h"
-#include "print_char.c"
-#include "print_str.c"
-#include "print%.c"
 #include <stdarg.h>
 
 /**
