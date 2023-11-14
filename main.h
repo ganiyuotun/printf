@@ -1,4 +1,3 @@
-main.h:
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -9,5 +8,6 @@ int _putchar(char c);
 int printf_char(va_list args, int charPrinted);
 int printf_string(va_list args, int charPrinted);
 int printf_percent(int charPrinted);
+int processSpecifier(const char *format, va_list args, int charPrinted);
 
 #endif

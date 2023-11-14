@@ -1,7 +1,9 @@
 #include "main.h"
-#include "printf_char.c"
-#include "printf_string.c"
-#include "printf_percent.c"
+#include "print_char.c"
+#include "print_str.c"
+#include "print%.c"
+#include <stdarg.h>
+
 /**
 * _printf- Custom implementation of the printf function.
 * @format: A format string containing directives for printing.
@@ -34,20 +36,30 @@ format++;
 va_end(args);
 return (charPrinted);
 }
-int processSpecifier(const char *format, va_list args, int charPrinted) 
+
+/**
+ * processSpecifier - Processes a single conversion specifier
+ * encountered in the format string.
+ * @format: A pointer to the format string.
+ * @args: The variable argument list containing additional arguments.
+ * @charPrinted: The current count of characters printed.
+ *
+ * Return: The updated count of characters printed.
+ */
+int processSpecifier(const char *format, va_list args, int charPrinted)
 {
-switch (*format) 
+switch (*format)
 {
 
 case 'c':
-return printf_char(args, charPrinted);
+return (printf_char(args, charPrinted));
 case 's':
-return printf_string(args, charPrinted);
+return (printf_string(args, charPrinted));
 case '%':
-return printf_percent(charPrinted);
-// Add more cases for other specifiers if needed
+return (printf_percent(charPrinted));
+/*Add more cases for other specifiers if needed*/
 default:
-// Handle unknown specifier
-return charPrinted;
+/*Handle unknown specifier*/
+return (charPrinted);
 }
 }
