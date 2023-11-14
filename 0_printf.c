@@ -1,39 +1,53 @@
-#include <stdarg.h>
-#include <stdio.h>
-#include <"main.h">
-
+#include "main.h"
+#include "printf_char.c"
+#include "printf_string.c"
+#include "printf_percent.c"
 /**
-* _printf - writes output according to a format.
-* @format: character string containing the format.
-*
+* _printf- Custom implementation of the printf function.
+* @format: A format string containing directives for printing.
 * Return: number of characters printed.
 */
+
 int _printf(const char *format, ...)
 {
+int charPrinted = 0;
+
 va_list args;
-int count = 0;
 
 va_start(args, format);
 
-for (const char *p = format; *p != '\0'; p++)
+while (*format != '\0')
 {
-if (*p == '%')
+if (*format == '%')
 {
-p++;
-(*p == 'c' ? putchar(va_arg(args, int)) :
-*p == 's' ? printf("%s", va_arg(args, char*)) :
-*p == '%' ? putchar('%') :
-putchar('%'), putchar(*p));
-count++;
+format++;
+charPrinted = processSpecifier(format, args, charPrinted);
+format++;
 }
 else
 {
-putchar(*p);
-count++;
+_putchar(*format);
+charPrinted++;
+format++;
 }
 }
-
 va_end(args);
+return (charPrinted);
+}
+int processSpecifier(const char *format, va_list args, int charPrinted) 
+{
+switch (*format) 
+{
 
-return (count);
+case 'c':
+return printf_char(args, charPrinted);
+case 's':
+return printf_string(args, charPrinted);
+case '%':
+return printf_percent(charPrinted);
+// Add more cases for other specifiers if needed
+default:
+// Handle unknown specifier
+return charPrinted;
+}
 }
