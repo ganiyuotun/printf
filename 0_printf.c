@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stddef.h>
 
 /**
 * _printf- Custom implementation of the printf function.
@@ -9,11 +10,15 @@
 
 int _printf(const char *format, ...)
 {
-int charPrinted = 0;
+if (format == NULL)
+{
+/* Handle the case where format is NULL */
+return -1;
+}
 
 va_list args;
-
 va_start(args, format);
+int charPrinted = 0;
 
 while (*format != '\0')
 {
@@ -45,6 +50,12 @@ return (charPrinted);
  */
 int processSpecifier(const char *format, va_list args, int charPrinted)
 {
+if (format == NULL || *format == '\0')
+{
+/* Handle the case where format is NULL or specifier is at the end */
+return charPrinted;
+}
+
 switch (*format)
 {
 
