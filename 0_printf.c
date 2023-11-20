@@ -49,7 +49,7 @@ switch (*format)
 {
 
 case 'c':
-return (printf_char(args, charPrinted));
+return (printf_cihar(args, charPrinted));
 case 's':
 return (printf_string(args, charPrinted));
 case '%':
