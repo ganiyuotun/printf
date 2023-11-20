@@ -5,10 +5,6 @@
 /**
  * printf_char - Prints a character and increments
  * the count of characters printed.
- * @args: The variable argument list containing
- * the character to be printed.
- * @charPrinted: The current count of characters printed.
- *
  */
 int printf_char(va_list args, int charPrinted)
 {
