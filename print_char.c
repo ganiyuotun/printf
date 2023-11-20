@@ -3,8 +3,12 @@
 #include "main.h"
 
 /**
- * printf_char - Prints a character and increments
+ * printf_char - Prints a character from va_list
  * the count of characters printed.
+ * @args: The va_list from which to print a character.
+ * @charPrinted: The number of characters that have been printed.
+ *
+ * Return: charPrinted
  */
 int printf_char(va_list args, int charPrinted)
 {
