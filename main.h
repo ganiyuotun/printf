@@ -9,5 +9,7 @@ int printf_char(va_list args, int charPrinted);
 int printf_string(va_list args, int charPrinted);
 int printf_percent(int charPrinted);
 int processSpecifier(const char *format, va_list args, int charPrinted);
+int printf_d(va_list args, int charPrinted);
+int printf_i(va_list args, int charPrinted);
 
 #endif
