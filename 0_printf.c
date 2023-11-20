@@ -3,7 +3,9 @@
 #include <stddef.h>
 
 /**
-* _printf- Custom implementation of the printf function.
+* _printf- Print a character from a va_list
+* @args: The va_list from which to print a character.
+* @charPrinted: The number of characters that have been printed
 * @format: A format string containing directives for printing.
 * Return: number of characters printed.
 */
@@ -13,12 +15,11 @@ int _printf(const char *format, ...)
 if (format == NULL)
 {
 /* Handle the case where format is NULL */
-return -1;
+return (-1);
 }
 
-va_list args;
 va_start(args, format);
-int charPrinted = 0;
+charPrinted;
 
 while (*format != '\0')
 {
@@ -29,7 +30,7 @@ charPrinted = processSpecifier(format, args, charPrinted);
 format++;
 }
 else
-{
+{i
 _putchar(*format);
 charPrinted++;
 format++;
@@ -53,7 +54,7 @@ int processSpecifier(const char *format, va_list args, int charPrinted)
 if (format == NULL || *format == '\0')
 {
 /* Handle the case where format is NULL or specifier is at the end */
-return charPrinted;
+return (charPrinted);
 }
 
 switch (*format)
