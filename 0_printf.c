@@ -4,14 +4,16 @@
 
 /**
 * _printf- Print a character from a va_list
-* @args: The va_list from which to print a character.
-* @charPrinted: The number of characters that have been printed
 * @format: A format string containing directives for printing.
 * Return: number of characters printed.
 */
 
 int _printf(const char *format, ...)
 {
+
+va_list args;
+int charPrinted = 0;
+
 if (format == NULL)
 {
 /* Handle the case where format is NULL */
@@ -19,7 +21,6 @@ return (-1);
 }
 
 va_start(args, format);
-charPrinted;
 
 while (*format != '\0')
 {
@@ -30,7 +31,7 @@ charPrinted = processSpecifier(format, args, charPrinted);
 format++;
 }
 else
-{i
+{
 _putchar(*format);
 charPrinted++;
 format++;
