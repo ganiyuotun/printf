@@ -11,6 +11,5 @@
 */
 int printf_i(va_list args, int charPrinted)
 {
-/* The implementation is the same as printf_d since 'i' is equivalent to 'd' in printf */
 return (printf_d(args, charPrinted));
 }

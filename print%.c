@@ -6,7 +6,7 @@
  * the count of characters printed.
  * @charPrinted: The current count of characters printed.
  *
- * Return: charPrinted
+ * Return: The updated count of characters printed.
  */
 int printf_percent(int charPrinted)
 {

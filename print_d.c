@@ -18,7 +18,7 @@ int i;
 /* Convert the integer to a string */
 sprintf(str, "%d", num);
 
-for (i = 0; str[i] != '\0'; i++) 
+for (i = 0; str[i] != '\0'; i++)
 {
 _putchar(str[i]);
 charPrinted++;
